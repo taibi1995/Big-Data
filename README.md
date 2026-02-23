@@ -24,11 +24,6 @@ Projet d'analyse et traitement de données volumineuses utilisant les techniques
 - Créer des visualisations pertinentes
 - Optimiser les performances de calcul
 
-## 📊 Données du Projet
-- **Volume**: [À spécifier]
-- **Source**: [À spécifier]
-- **Format**: [CSV, Parquet, JSON, etc.]
-- **Caractéristiques**: [À décrire]
 
 ## 🛠️ Technologies Utilisées
 
@@ -96,96 +91,6 @@ jupyter notebook
 
 
 
-## 🚀 Étapes du Projet
-
-### 1️⃣ Exploration (EDA)
-```python
-# Analyser la structure
-print(df.shape)
-print(df.columns)
-print(df.dtypes)
-print(df.isnull().sum())
-```
-
-### 2️⃣ Cleaning
-```python
-# Supprimer les valeurs manquantes
-df = df.dropna()
-
-# Supprimer les doublons
-df = df.drop_duplicates()
-
-# Convertir les types
-df = df.astype({'age': int, 'salary': float})
-```
-
-### 3️⃣ Transformation
-```python
-# Normalisation
-from sklearn.preprocessing import MinMaxScaler
-scaler = MinMaxScaler()
-df_scaled = scaler.fit_transform(df[['age', 'salary']])
-
-# Agrégation
-grouped = df.groupby('category').agg({'salary': 'mean', 'age': 'median'})
-```
-
-### 4️⃣ Analyse
-```python
-# Statistiques
-print(df.describe())
-
-# Corrélation
-print(df.corr())
-
-# Distribution
-df.hist(figsize=(10, 10))
-plt.show()
-```
-
-### 5️⃣ Visualisation
-```python
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Graphique de distribution
-plt.figure(figsize=(10, 6))
-sns.histplot(data=df, x='salary', hue='category')
-plt.title('Distribution des salaires par catégorie')
-plt.show()
-
-# Heatmap de corrélation
-plt.figure(figsize=(8, 6))
-sns.heatmap(df.corr(), annot=True)
-plt.title('Matrice de corrélation')
-plt.show()
-```
-
-## 📈 Performance et Optimisation
-
-### Optimisation Spark
-
-```python
-# Partitioning pour améliorer la performance
-df_partitioned = df.repartition(4, 'category')
-
-# Cache pour les calculs répétés
-df.cache()
-
-# Broadcast pour les petites tables
-from pyspark.sql.functions import broadcast
-joined = df1.join(broadcast(df2), 'id')
-```
-
-### Mesurer les performances
-
-```python
-import time
-start = time.time()
-result = df.groupBy('category').count().collect()
-end = time.time()
-print(f"Temps d'exécution: {end - start:.2f} secondes")
-```
 
 
 ## 📚 Ressources
@@ -221,10 +126,7 @@ MIT License
 **Younes Taibi**
 - GitHub: [@taibi1995](https://github.com/taibi1995)
 
----
 
-**Dernière mise à jour**: Février 2026
-```
 
 ### 2️⃣ requirements.txt (À créer)
 
